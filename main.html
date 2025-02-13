@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Special</title>
+
+    <!-- Setting the Emoji as Favicon -->
+    <link rel="icon" type="image/png" href="apple-touch-icon.png">
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
+
+        <style>
+
+    
+            body {
+                text-align: center;
+                /* font-family: Arial, sans-serif; */
+                background-color: #ffe6e6;
+                font-family: 'Lobster', cursive;
+
+            }
+    
+            .gif-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            }
+
+            .gif-container img {
+                width: 500px;
+                height: auto;
+            }
+    
+            #maintext {
+            font-size: 100vw; /* Responsive font size */
+            font-weight: bold;
+            margin-top: 10px;
+            color: #ff4d6d;
+        }
+
+    
+            .button-container {
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+                margin-top: 20px;
+            }
+    
+            .btn {
+                font-size: 20px;
+                padding: 10px 20px;
+                border: none;
+                cursor: pointer;
+                transition: all 0.2s ease-in-out;
+                border-radius: 5px;
+            }
+    
+            #yesBtn {
+                background-color: #ff4d6d;
+                color: white;
+            }
+    
+            #noBtn {
+                background-color: #333;
+                color: white;
+            }
+
+                    /* Media Query for Phones (max width 768px) */
+        @media (max-width: 768px) {
+            .gif-container img {
+                width: 80%; /* Reduce GIF size on small screens */
+            }
+
+            .text {
+                font-size: 8vw; /* Adjust font size for smaller screens */
+            }
+
+            .btn {
+                font-size: 5vw; /* Adjust button size for smaller screens */
+            }
+        }
+        </style>
+<body>
+    <div class="gif-container">
+        <img id ="mainGif" src="jp.gif" alt="Cute Valentine GIF">
+    </div>
+
+    <div id= "mainText" >Will you be my Valentine Darby? ❤️</div>
+    <div id = "buttonContainer"          class="button-container">
+        <button id="yesBtn" class="btn" onclick="pickYes()">Yes</button>
+        <button id="noBtn" class="btn" onclick="pickNo()">No</button>
+    </div>
+
+
+    <form id="emailForm" action="https://formsubmit.co/avani4@ualberta.ca" method="POST" style="display: none;">
+        <input type="hidden" name="name" value="Valentine's Response">
+        <input type="hidden" name="message" value="Darby YES to being your Valentine! ❤️">
+        <input type="hidden" name="_subject" value="💌 Valentine Alert!">
+        <input type="hidden" name="_captcha" value="false">
+    </form>
+
+    <script>
+        let yesSize = 16; // Initial font size for Yes button
+        let noSize = 16;  // Initial font size for No button
+        let noResponses = [
+            "Are you sure?", 
+            "Pookie, please?", 
+            "Please? 😢", 
+            "Crying... 😢😭"
+        ];
+        let noResponseIndex = 0;
+        function pickNo() {
+            yesSize += 4; // Increase Yes button size
+            noSize = Math.max(5, noSize - 2); // Decrease No button size (but not less than 10px)
+
+            document.getElementById("yesBtn").style.fontSize = yesSize + "px";
+            document.getElementById("yesBtn").style.padding = (yesSize / 2) + "px " + (yesSize * 1.5) + "px";
+
+            document.getElementById("noBtn").style.fontSize = noSize + "px";
+            document.getElementById("noBtn").style.padding = (noSize / 2) + "px " + (noSize * 1.5) + "px";
+                      // Update the text based on the sequence of No responses
+            document.getElementById("noBtn").innerText = noResponses[noResponseIndex];
+            noResponseIndex = (noResponseIndex + 1) % noResponses.length;
+        }
+
+        function pickYes() {
+
+            document.getElementById("mainGif").src = "tp.gif"; // Thank You GIF
+            document.getElementById("mainText").innerHTML = "Thank you for being my Valentine, baby! Can't wait to see you ❤️";
+            document.getElementById("buttonContainer").style.display = "none"; // Hide buttons
+            setTimeout(function() {
+                // Submit hidden form to send email after 3 seconds
+                document.getElementById("emailForm").submit();
+            }, 30000);
+                }
+    </script>
+
+</body>
+</html>
