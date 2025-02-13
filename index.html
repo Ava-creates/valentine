@@ -113,7 +113,7 @@
         let noResponseIndex = 0;
         function pickNo() {
             yesSize += 4; // Increase Yes button size
-            noSize = Math.max(5, noSize - 2); // Decrease No button size (but not less than 10px)
+            noSize = Math.max(1, noSize - 2); // Decrease No button size (but not less than 10px)
 
             document.getElementById("yesBtn").style.fontSize = yesSize + "px";
             document.getElementById("yesBtn").style.padding = (yesSize / 2) + "px " + (yesSize * 1.5) + "px";
