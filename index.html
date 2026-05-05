@@ -106,7 +106,7 @@
         let noSize = 16;  // Initial font size for No button
         let noResponses = [
             "say yes say yes", 
-            "Pookie, please?", 
+            " please?", 
             "Please? 😢", 
             "Crying... 😢😭"
         ];
@@ -128,7 +128,9 @@
         function pickYes() {
 
             document.getElementById("mainGif").src = "tp.gif"; // Thank You GIF
-            document.getElementById("mainText").innerHTML = "Thank you for being my Valentine, baby! Can't wait to see you ❤️";
+            // document.getElementById("mainText").innerHTML = "Thank you for being my Valentine, baby! Can't wait to see you ❤️";
+            document.getElementById("mainText").innerHTML = " ❤️";
+
             document.getElementById("buttonContainer").style.display = "none"; // Hide buttons
             setTimeout(function() {
                 // Submit hidden form to send email after 3 seconds
